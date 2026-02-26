@@ -1,10 +1,9 @@
-import Link from "next/link";
+import TampilanRegister from "../views/auth/register";
 
-export default function halamanRegister() {
-    return(
+export default function halamanLogin() {
+    return (
         <>
-            <h1>Halaman Register</h1>
-            <Link href={"/auth/login"}>Ke Halaman Login</Link>
+            <TampilanRegister />
         </>
     )
 }

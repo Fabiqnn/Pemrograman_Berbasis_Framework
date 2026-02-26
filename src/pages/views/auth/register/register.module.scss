@@ -1,0 +1,68 @@
+@use "@/styles/colors.scss" as *;
+@use "sass:map";
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: map.get($schema, color-secondary);
+
+  h1 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.form_Regis {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: map.get($schema, color-primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: map.get($schema, color-primary);
+    }
+  }
+}

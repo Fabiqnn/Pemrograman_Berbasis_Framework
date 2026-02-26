@@ -1,17 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
-      <h1>Praktikum1 Next.js Pages Router</h1> <br/>
-      <p>Mahasiswa D4 Pengembangan Web</p>
-      <Link href={"/about"}>About</Link>
-    </>
-  )
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-100 px-6">
+      <div className="bg-white shadow-xl rounded-2xl p-10 text-center max-w-md w-full">
+        <h1 className="text-3xl font-bold text-slate-800 mb-4">
+          Praktikum Pemrograman Berbasis Framework
+        </h1>
+
+        <p className="text-slate-600 mb-6">
+          Mahasiswa D4 Pengembangan Web
+        </p>
+
+        <Link
+          href="/about"
+          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-200"
+        >
+          About
+        </Link>
+      </div>
+    </div>
+  );
 }
