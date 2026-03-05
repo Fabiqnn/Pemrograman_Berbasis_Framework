@@ -1,15 +1,16 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import styles from "../../produk/product.module.scss"
 
 type ProductType = {
     id: string;
     name: string;
     price: number;
-    size: string;
+    image: string;
     category: string;
 }
 
-export default function TampilanProduk() {
+export default function TampilanProduk({ products }: { products: ProductType[] }) {
     // const { push } = useRouter();
     // useEffect(() => {
     //     const loginStatus = localStorage.getItem("isLogin")
@@ -17,37 +18,35 @@ export default function TampilanProduk() {
     //         push("/auth/login")
     //     }
     // }, []);
-    const [products, setProducts] = useState<ProductType[]>([]);
-
-    const fetchProduct = async () => {
-        try {
-            const response = await fetch("/api/produk");
-            const responseData = await response.json();
-            setProducts(responseData.data)
-        } catch (e) {
-            console.error("Error fetching produk: ", e)
-        }
-    }
-
-    useEffect(() => {
-        fetchProduct();
-    }, []);
 
     return (
-        <div>
-            <h1 className="text-xl font-bold">Daftar Produk</h1><br />
+        <div className={styles.produk}>
+            <h1 className={styles.produk__title}>Daftar Produk</h1><br />
 
-            <button onClick={fetchProduct} className="bg-blue-500 text-white px-4 py-2 rounded">Refresh Data</button>
-
-            {products.map((products:ProductType) => (
-                <div key={products.id}>
-                    <br />
-                    <h2 className="text-lg font-bold">{products.name}</h2>
-                    <p>Harga: {products.price}</p>
-                    <p>Ukuran: {products.size}</p>
-                    <p>Kategori: {products.category}</p>
-                </div>
-            ))}
+            {/* <button onClick={fetchProduct} className="bg-blue-500 text-white px-4 py-2 rounded">Refresh Data</button> */}
+            <div className={styles.produk__content}>
+                {products.length > 0 ? (
+                    <>
+                        {products.map((products: ProductType) => (
+                            <div key={products.id} className={styles.produk__content__item}>
+                                <div className={styles.produk__content__item__image}>
+                                    <img src={products.image} alt={products.name} width={200} />
+                                </div>
+                                <h4 className={styles.produk__content__item__name}>{products.name}</h4>
+                                <p className={styles.produk__content__item__category}>Kategori: {products.category}</p>
+                                <p className={styles.produk__content__item__price}>Harga: {products.price.toLocaleString("id-ID")}</p>
+                            </div>
+                        ))}
+                    </>
+                ) : (
+                    <div className={styles.produk__content__skeleton}>
+                        <div className={styles.produk__content__skeleton__image}></div>
+                        <div className={styles.produk__content__skeleton__name}></div>
+                        <div className={styles.produk__content__skeleton__category}></div>
+                        <div className={styles.produk__content__skeleton__price}></div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
