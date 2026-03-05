@@ -1,14 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styles from "../../produk/product.module.scss"
-
-type ProductType = {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-    category: string;
-}
+import { ProductType } from "@/pages/types/Product.type"
 
 export default function TampilanProduk({ products }: { products: ProductType[] }) {
     // const { push } = useRouter();
