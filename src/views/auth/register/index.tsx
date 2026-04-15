@@ -13,6 +13,7 @@ export default function TampilanRegister() {
         event.preventDefault();
         setIsLoading(true);
         setError({email:"", password:""});
+        setServerErr("");
         const form = event.currentTarget;
         const formData = new FormData(event.currentTarget);
         const email = formData.get("email") as string;

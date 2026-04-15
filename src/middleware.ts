@@ -8,8 +8,8 @@ function baseMiddleware(request: NextRequest) {
     return NextResponse.next();
 }
 
-export const middleware = withAuth(baseMiddleware, ["/produk", "/profile", "/about"]);
+export const middleware = withAuth(baseMiddleware, ["/produk", "/profile", "/about", "/admin", "/editor"]);
 
 export const config = {
-    matcher: ["/produk/:path*", "/about/:path*", "/profile/:path*"]
+    matcher: ["/produk/:path*", "/about/:path*", "/profile/:path*", "/admin/:path*", "/editor"]
 }

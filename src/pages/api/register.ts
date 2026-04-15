@@ -11,13 +11,12 @@ export default async function handler(
     res: NextApiResponse
 ) {
     if (req.method === "POST") {
-        await signUp(req.body, (result: {status: string, message: string}) => {
-            if (result.status === "success") {
-                res.status(200).json({name: result.message, alamat: ""});
-            } else {
-                res.status(400).json({name: result.message, alamat: ""});
-            }
-        });
+        const result = await signUp(req.body);
+        if (result.status === "success") {
+            res.status(200).json({name: result.message, alamat: ""});
+        } else {
+            res.status(400).json({name: result.message, alamat: ""});
+        }
     } else {
         res.status(405).json({name: "Methdod not allowed", alamat: ""});
     }
