@@ -1,6 +1,7 @@
 import styles from '@/styles/404.module.scss'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Custom404() {
     return (
@@ -9,7 +10,12 @@ export default function Custom404() {
                 <title>404 - Not Found</title>
                 <meta name="description" content="Halaman Tidak Dapat Ditemukan" />
             </Head>
-            <img src="/page-not-found.png" alt="404" className={styles.error__image} />
+            <Image
+                src="/page-not-found.png" 
+                alt="404" 
+                width={400}
+                height={200}
+                className={styles.error__image} />
             <h1 className="text-4xl md:text-5xl font-bold text-red-600 mt-6">
                 404 - Missing Page
             </h1>

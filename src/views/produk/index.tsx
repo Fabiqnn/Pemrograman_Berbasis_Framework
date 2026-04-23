@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import styles from "@/pages/produk/product.module.scss"
 import { ProductType } from "@/types/Product.type"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function TampilanProduk({ products }: { products: ProductType[] }) {
     // const { push } = useRouter();
@@ -25,7 +26,7 @@ export default function TampilanProduk({ products }: { products: ProductType[] }
                             <Link href={`/produk/${products.id}`} key={products.id} className={styles.produk__content__item}>
                                 <div key={products.id} className={styles.produk__content__item}>
                                     <div className={styles.produk__content__item__image}>
-                                        <img src={products.image} alt={products.name} width={200} />
+                                        <Image src={products.image} alt={products.name} width={200} height={200}/>
                                     </div>
                                     <h4 className={styles.produk__content__item__name}>{products.name}</h4>
                                     <p className={styles.produk__content__item__category}>Kategori: {products.category}</p>
