@@ -20,9 +20,9 @@ export default function TampilanProduk({ products }: { products: ProductType[] }
 
             {/* <button onClick={fetchProduct} className="bg-blue-500 text-white px-4 py-2 rounded">Refresh Data</button> */}
             <div className={styles.produk__content}>
-                {products.length > 0 ? (
+                {products?.length > 0 ? (
                     <>
-                        {products.map((products: ProductType) => (
+                        {products?.map((products: ProductType) => (
                             <Link href={`/produk/${products.id}`} key={products.id} className={styles.produk__content__item}>
                                 <div key={products.id} className={styles.produk__content__item}>
                                     <div className={styles.produk__content__item__image}>
