@@ -1,5 +1,6 @@
 import TampilanProduk from "@/views/produk";
 import { ProductType } from "@/types/Product.type";
+import { retrieveProducts } from "@/utils/db/servicefirebase";
 
 export default function halamanProdukStatic(props:{products:ProductType[]}) {
     const {products} = props;
@@ -12,12 +13,11 @@ export default function halamanProdukStatic(props:{products:ProductType[]}) {
 }
 
 export async function getStaticProps() {
-    const res = await fetch('http://127.0.0.1:3000/api/produk')
-    const response: {data: ProductType[]} = await res.json();
+    const products = await retrieveProducts("products") as ProductType[];
 
     return {
         props: {
-            products: response.data
+            products,
         },
         revalidate: 10,
     }
